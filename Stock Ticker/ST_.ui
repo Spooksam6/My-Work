@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1293</width>
+    <height>996</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Stock Ticker</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>20</width>
+    <height>18</height>
+   </size>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextEdit" name="Crawler">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>313</y>
+      <width>1311</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+   </widget>
+   <widget class="QTableView" name="Game_Info">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>400</y>
+      <width>1191</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashLine</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GrainButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>760</y>
+      <width>271</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Grain Price: 1.00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BondsButton">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>760</y>
+      <width>221</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Bonds Price:1.00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="SilverButton">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>850</y>
+      <width>221</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Silver Price: 1.00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="IndustryButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>850</y>
+      <width>271</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Industry Price: 1.00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="OilButton">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>760</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Oil Price: 1.00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GoldButton">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>850</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Gold Price: 1.00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Market_Start">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>760</y>
+      <width>191</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start Market</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1111</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="Display"/>
+   </widget>
+   <widget class="QPushButton" name="Market_Stop">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>840</y>
+      <width>191</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Stop Market</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="FutureMarket">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>920</x>
+      <y>770</y>
+      <width>181</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Future Market</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>810</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+ key for buying Stocks</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>850</y>
+      <width>281</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>- key for selling Stocks</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1293</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
