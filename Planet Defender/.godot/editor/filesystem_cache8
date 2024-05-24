@@ -1,0 +1,105 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1716318327
+basic_tower.gd::GDScript::-1::1714740600::0::1::::Tower<>Area2D<>::
+basic_tower.tscn::PackedScene::2102965162522575070::1714570621::0::1::::<><>::uid://dqkr5et6ugvon::::res://art/Tower_Base.png<>res://basic_tower.gd<>uid://db0kkqt47l0ej::::res://shooter_turret.tscn<>uid://d3enxjcxxk2r0::::res://bomber_turret.tscn<>uid://4ry60s83hppr::::res://art/tower_level_2_badge.png<>uid://csmq6tovr1bcg::::res://waver_turret.tscn<>uid://phl4ewxvuxuh::::res://art/tower_level_3_badge.png
+bomb.gd::GDScript::-1::1714570621::0::1::::<>Area2D<>::
+bomb.tscn::PackedScene::2510832125190213935::1714570621::0::1::::<><>::res://bomb.gd<>uid://bq3twdsyfg1u3::::res://art/bomb.png<>uid://cwg6uwsvgk72p::::res://art/explosion.png
+bomber_turret.gd::GDScript::-1::1714740600::0::1::::<>Area2D<>::
+bomber_turret.tscn::PackedScene::9133638055002161127::1715778600::0::1::::<><>::res://bomber_turret.gd<>uid://bb1jbkh7rx520::::res://bomb.tscn<>uid://c3xxf4qv0muly::::res://art/Tower_Weapon_1.png
+bullet.gd::GDScript::-1::1714744160::0::1::::bulleted<>Area2D<>::
+bullet.tscn::PackedScene::1036217695865623060::1715778600::0::1::::<><>::res://bullet.gd<>uid://cgmm60uvirk15::::res://art/Bullet_0.png
+Dummy_Mob.tscn::PackedScene::4386812441446759112::1714570619::0::1::::<><>::res://Dummy_Mob_Scrpit.gd<>uid://bgq584i62shmg::::res://art/Ramming_Enemy.png<>uid://bwc0plhqvvqxb::::res://art/Speed_enemypng.png<>uid://cpe3br8jt5ki6::::res://art/Spliting_Enemy.png
+enemy_bullet.gd::GDScript::-1::1714683110::0::1::::<>Area2D<>::
+enemy_bullet.tscn::PackedScene::8448465509459643332::1715778600::0::1::::<><>::res://enemy_bullet.gd<>uid://cgmm60uvirk15::::res://art/Bullet_0.png
+export_presets.cfg::TextFile::-1::1714747182::0::1::::<><>::
+fast_shot_enemy.gd::GDScript::-1::1714681248::0::1::::<>RigidBody2D<>::
+fast_shot_enemy.tscn::PackedScene::4673141238333068053::1715778600::0::1::::<><>::res://fast_shot_enemy.gd<>uid://dsmq80plghkv1::::res://enemy_bullet.tscn<>uid://cenbnkhwiljht::::res://art/Single_Shot_Enemy.png<>uid://o07mbj46qo5q::::res://bullet.tscn
+game.tscn::PackedScene::84000436485827432::1715778599::0::1::::<><>::res://game_manager.gd<>uid://jagvnwspi471::::res://pause_menu.tscn<>uid://bjfd3mxv43fbk::::res://menus_node.tscn
+game_manager.gd::GDScript::-1::1714743898::0::1::::GameManager<>Node<>::
+game_over.gd::GDScript::-1::1714570621::0::1::::<>Control<>::
+game_over.tscn::PackedScene::7254409701582080552::1714570621::0::1::::<><>::uid://b10vrd8csdlok::::res://art/SpeedyRegular-7BLoE.ttf<>res://game_over.gd
+HUD.gd::GDScript::-1::1714577358::0::1::::<>Control<>::
+HUD.tscn::PackedScene::8574766709299386941::1715778599::0::1::::<><>::res://HUD.gd<>res://Qt5.gd<>res://Shield Bar.gd
+icon.svg::CompressedTexture2D::364254048646880055::1714570621::1714570637::1::::<><>::
+Level1 Scene.gd::GDScript::-1::1714570619::0::1::::<>Node2D<>::
+Level1 Scene.tscn::PackedScene::1418108237255585489::1715778599::0::1::::<><>::uid://bssxfibcw6kh2::::res://art/Level 1 Backdrop.png<>uid://dveeeybvam7es::::res://Speed_Mob.tscn<>uid://8isjr0s13n7j::::res://mob.tscn<>uid://bpqru18ehvx5u::::res://Ramming_Enemy.tscn<>uid://b7tx7ogbmail6::::res://fast_shot_enemy.tscn<>uid://c03nj8anm50dv::::res://Splitting_Enemy.tscn<>uid://47xr8rautg2y::::res://basic_tower.tscn<>uid://dp54o33w87lwm::::res://upgrade_Menu.tscn<>uid://dxii5jq5xtpel::::res://art/Level 2_BackDrop.png<>uid://8imu1gjm8khr::::res://Mouse_Moved_Player.tscn<>uid://dawv6c8cfnyo8::::res://player_upgrade_menu.tscn<>uid://11ppl5y3kro7::::res://art/Level 5 Backdrop.png<>uid://dufxfjcx53qc0::::res://HUD.tscn<>uid://ca6d1gpguseo6::::res://art/Level 4_BackDrop.png<>uid://dbmdckq3up8dg::::res://game_over.tscn<>uid://b55dqpxa3wxch::::res://art/Level_5_Backdrop.png
+level_5_scene.tscn::PackedScene::3085304979096844816::1715778601::0::1::::<><>::uid://dewgrdtcdtc5b::::res://art/Space Background2.png
+Marker2D.gd::GDScript::-1::1714570620::0::1::::<>Marker2D<>::
+menus_node.gd::GDScript::-1::1714668740::0::1::::<>Node2D<>::
+menus_node.tscn::PackedScene::3028674985218035152::1714701550::0::1::::<><>::res://menus_node.gd<>uid://ug7bhaqnjdbl::::res://Level1 Scene.tscn<>uid://dewgrdtcdtc5b::::res://art/Space Background2.png<>uid://b10vrd8csdlok::::res://art/SpeedyRegular-7BLoE.ttf
+mob.gd::GDScript::-1::1714681273::0::1::::<>RigidBody2D<>::
+mob.tscn::PackedScene::2333856772473249149::1715778600::0::1::::<><>::res://mob.gd<>uid://dsmq80plghkv1::::res://enemy_bullet.tscn<>uid://cenbnkhwiljht::::res://art/Single_Shot_Enemy.png<>uid://o07mbj46qo5q::::res://bullet.tscn
+Mouse_Moved_Player.gd::GDScript::-1::1714756924::0::1::::<>CharacterBody2D<>::
+Mouse_Moved_Player.tscn::PackedScene::2333512557181036303::1715778599::0::1::::<><>::res://Mouse_Moved_Player.gd<>uid://bqy8bfeagfee7::::res://art/Player Model (1).png<>uid://o07mbj46qo5q::::res://bullet.tscn<>uid://cbq1tblidtvy7::::res://shockwave.tscn<>res://Marker2D.gd<>uid://c144dwo2o6s8d::::res://art/Player Model3(Flipped).png<>uid://c8mfjga6p5svo::::res://art/Player Model2.png<>uid://bb1jbkh7rx520::::res://bomb.tscn<>uid://d0fbcoqdh61p7::::res://art/explosion.png
+node_2d.tscn::PackedScene::6181906232063286963::1714570621::0::1::::<><>::
+pause_menu.gd::GDScript::-1::1714570621::0::1::::<>Control<>::
+pause_menu.tscn::PackedScene::632102113998373822::1714570621::0::1::::<><>::res://pause_menu.gd<>uid://b10vrd8csdlok::::res://art/SpeedyRegular-7BLoE.ttf
+Player.gd::GDScript::-1::1714570620::0::1::::<>Area2D<>::
+player.tscn::PackedScene::5115357618194960827::1714570621::0::1::::<><>::res://Player.gd<>uid://ce501papjfpyn::::res://art/Player Model size.png<>uid://o07mbj46qo5q::::res://bullet.tscn<>uid://bqy8bfeagfee7::::res://art/Player Model (1).png<>uid://bqjrpi8e84u8o::::res://test_enemy.tscn
+Player_upgrades.gd::GDScript::-1::1714570620::0::1::::Upgrades<>Control<>::
+player_upgrade_menu.tscn::PackedScene::7206008934251103509::1714570621::0::1::::<><>::res://Player_upgrades.gd<>uid://w5hkn0esr7kj::::res://art/Player Model2(Flipped).png<>uid://b10vrd8csdlok::::res://art/SpeedyRegular-7BLoE.ttf
+Qt5.gd::GDScript::-1::1714570620::0::1::::<>ProgressBar<>::
+Ramming_Enemy.gd::GDScript::-1::1715778599::0::1::::<>RigidBody2D<>::
+Ramming_Enemy.tscn::PackedScene::3473352703861269572::1715778600::0::1::::<><>::res://Ramming_Enemy.gd<>uid://cs8p76eciestc::::res://art/Ramming_Enemy.png
+RigidBody2D.gd::GDScript::-1::1714570620::0::1::::<>RigidBody2D<>::
+Shield Bar.gd::GDScript::-1::1714570620::0::1::::<>ProgressBar<>::
+shockwave.gd::GDScript::-1::1714570621::0::1::::<>Area2D<>::
+shockwave.tscn::PackedScene::4877672896869775020::1714570622::0::1::::<><>::res://shockwave.gd<>uid://ciffwx7jdbmpo::::res://art/shockwave.png
+shooter_turret.gd::GDScript::-1::1714676226::0::1::::<>Area2D<>::
+shooter_turret.tscn::PackedScene::7281686237521281197::1715778600::0::1::::<><>::res://shooter_turret.gd<>uid://dpg7t555ibmhi::::res://art/Tower_Weapon_2.png<>uid://o07mbj46qo5q::::res://bullet.tscn
+shooter_turret_bullet.tscn::PackedScene::8979139984966857133::1714570622::0::1::::<><>::
+Speed_Enemy.png::CompressedTexture2D::5290414152769864984::1713839925::1716318329::1::::<><>::
+Speed_Mob.gd::GDScript::-1::1714682763::0::1::::<>RigidBody2D<>::
+Speed_Mob.tscn::PackedScene::8641736552700768346::1715778600::0::1::::<><>::res://Speed_Mob.gd<>uid://dsmq80plghkv1::::res://enemy_bullet.tscn
+spliited_enemy.gd::GDScript::-1::1714679341::0::1::::<>RigidBody2D<>::
+spliited_enemy.tscn::PackedScene::4128577942584636445::1715778600::0::1::::<><>::res://spliited_enemy.gd
+Splitting_Enemy.gd::GDScript::-1::1714679769::0::1::::<>RigidBody2D<>::
+Splitting_Enemy.tscn::PackedScene::6586172162380252975::1715778600::0::1::::<><>::res://Splitting_Enemy.gd<>uid://by26ctkkhej2t::::res://spliited_enemy.tscn<>uid://cywdfhxsukbvj::::res://art/Spliting_Enemy.png
+Start Button.gd::GDScript::-1::1714570620::0::1::::<>Button<>::
+test_enemy.gd::GDScript::-1::1714570622::0::1::::<>RigidBody2D<>::
+test_enemy.tscn::PackedScene::3529081028866112248::1714570622::0::1::::<><>::uid://bprxnabcbxmvw::::res://art/Rough_Enemy_1.png<>res://test_enemy.gd
+upgrade_Menu.gd::GDScript::-1::1714740600::0::1::::UpgradeMenu<>Control<>::
+upgrade_Menu.tscn::PackedScene::8275813347129755508::1714570622::0::1::::<><>::res://upgrade_Menu.gd
+waver_turret.gd::GDScript::-1::1714740600::0::1::::<>Area2D<>::
+waver_turret.tscn::PackedScene::6062040937963616846::1715778600::0::1::::<><>::uid://b580m2j7aow04::::res://art/Tower_Weapon_3.png<>res://waver_turret.gd<>uid://cbq1tblidtvy7::::res://shockwave.tscn
+::res://art/::1714744252
+bomb.png::CompressedTexture2D::4122651622610919006::1714396438::1714570669::1::::<><>::
+Bullet_0.png::CompressedTexture2D::5219532270732720226::1709578603::1714744144::1::::<><>::
+circle.png::CompressedTexture2D::3477818232285934843::1713960201::1714570669::1::::<><>::
+ene.png::CompressedTexture2D::5980590960964987364::1711986217::1714652029::1::::<><>::
+explosion.png::CompressedTexture2D::8924370079571670222::1714396445::1714570670::1::::<><>::
+Fast_Shot_Enemy.png::CompressedTexture2D::2372231260058236623::1714673312::1714743637::1::::<><>::
+GreyPlanet1.png::CompressedTexture2D::1113435553040125952::1709578603::1709578668::1::::<><>::
+Laser_Beam.png::CompressedTexture2D::3970217201880623285::1711461494::1712150945::1::::<><>::
+Level2_Background.png::CompressedTexture2D::2274686987849472392::1714052901::1714652029::1::::<><>::
+Level3_Backdrop.png::CompressedTexture2D::9063424700005533966::1713443287::1714570670::1::::<><>::
+Level 1 Backdrop.png::CompressedTexture2D::3688384510407019145::1714702347::1714702364::1::::<><>::
+Level 2_BackDrop.png::CompressedTexture2D::8790660285367389463::1714052338::1714652032::1::::<><>::
+Level 4_BackDrop.png::CompressedTexture2D::4837065997994100827::1714093192::1714652032::1::::<><>::
+Level 5 Backdrop.png::CompressedTexture2D::1879521923223731408::1714053239::1714652030::1::::<><>::
+Level_5_Backdrop.png::CompressedTexture2D::4554228872555706071::1714701059::1714701077::1::::<><>::
+Player Model2(Flipped).png::CompressedTexture2D::1606529491177083461::1709578604::1709578668::1::::<><>::
+Player Model2.png::CompressedTexture2D::7114165714168809184::1709578604::1709578668::1::::<><>::
+Player Model3(Flipped).png::CompressedTexture2D::6659385585402390245::1709578604::1709578668::1::::<><>::
+Player Model3.png::CompressedTexture2D::4043456378147543691::1709578604::1709578668::1::::<><>::
+Player Model (1).png::CompressedTexture2D::3560992963358439744::1709578603::1709578668::1::::<><>::
+Player Model size.png::CompressedTexture2D::5117093218564839057::1709578603::1709578668::1::::<><>::
+Player Model.png::CompressedTexture2D::7188743198694708388::1709578603::1709578668::1::::<><>::
+Ramming_Enemy.png::CompressedTexture2D::6105334553556023600::1713960200::1712150943::1::::<><>::
+Rough_Enemy_1.png::CompressedTexture2D::3475767467874925528::1711460787::1712150947::1::::<><>::
+shockwave.png::CompressedTexture2D::5485629045573436553::1714396452::1714570669::1::::<><>::
+Single_Shot_Enemy.png::CompressedTexture2D::5080518122112484221::1713839811::1712150943::1::::<><>::
+Space Background1.png::CompressedTexture2D::6491797593215105919::1713960200::1714570669::1::::<><>::
+Space Background2.png::CompressedTexture2D::7485828583690694093::1713960201::1714570670::1::::<><>::
+SpeedyRegular-7BLoE.ttf::FontFile::4264245686141568586::1713960201::1714570669::1::::<><>::
+Speed_Enemy.png::CompressedTexture2D::6942538974504329528::1713960201::1714570669::1::::<><>::
+Speed_enemypng.png::CompressedTexture2D::4257302385893225966::1714570620::1712150943::1::::<><>::
+Spliting_Enemy.png::CompressedTexture2D::6502981409275030119::1714679548::1714744252::1::::<><>::
+Stand_In.png::CompressedTexture2D::2929807962377069146::1711457919::1711458052::1::::<><>::
+start_placeholder.png::CompressedTexture2D::1305874045491482749::1713960201::1714570669::1::::<><>::
+Tower_Base.png::CompressedTexture2D::8304013330402765773::1713186733::1712150943::1::::<><>::
+tower_level_2_badge.png::CompressedTexture2D::121059712959155275::1713960201::1714570669::1::::<><>::
+tower_level_3_badge.png::CompressedTexture2D::1374564091591387052::1713960202::1714570669::1::::<><>::
+Tower_Weapon_1.png::CompressedTexture2D::6787016646279709166::1712669650::1712150943::1::::<><>::
+Tower_Weapon_2.png::CompressedTexture2D::8226459469445311086::1712669701::1712150944::1::::<><>::
+Tower_Weapon_3.png::CompressedTexture2D::4561751246552269303::1712669569::1712150944::1::::<><>::
