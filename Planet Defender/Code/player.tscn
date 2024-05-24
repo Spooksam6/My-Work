@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce46gswj1bc4r"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_84sc5"]
+[ext_resource type="Texture2D" uid="uid://ce501papjfpyn" path="res://art/Player Model size.png" id="2_06ctg"]
+[ext_resource type="PackedScene" uid="uid://o07mbj46qo5q" path="res://bullet.tscn" id="2_6rqks"]
+[ext_resource type="Texture2D" uid="uid://bqy8bfeagfee7" path="res://art/Player Model (1).png" id="3_6rhgf"]
+[ext_resource type="PackedScene" uid="uid://bqjrpi8e84u8o" path="res://test_enemy.tscn" id="3_30ooo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fxf1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_06ctg")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6rhgf")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1v5w"]
+radius = 80.0
+height = 168.0
+
+[node name="Player" type="Area2D" groups=["player"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_84sc5")
+Bullet = ExtResource("2_6rqks")
+test_enemy = ExtResource("3_30ooo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(93.25, 110)
+scale = Vector2(0.725681, 0.635838)
+sprite_frames = SubResource("SpriteFrames_8fxf1")
+animation = &"up"
+
+[node name="Muzzle" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(1.03352, -163.564)
+rotation = -1.5708
+scale = Vector2(1.37802, 1.57273)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(93.25, 110)
+shape = SubResource("CapsuleShape2D_c1v5w")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://db0kkqt47l0ej"]
+
+[ext_resource type="Script" path="res://shooter_turret.gd" id="1_c5ciu"]
+[ext_resource type="Texture2D" uid="uid://dpg7t555ibmhi" path="res://art/Tower_Weapon_2.png" id="1_prjh6"]
+[ext_resource type="PackedScene" uid="uid://o07mbj46qo5q" path="res://bullet.tscn" id="2_jb8vf"]
+
+[node name="shooter_turret" type="Area2D"]
+script = ExtResource("1_c5ciu")
+Bullet = ExtResource("2_jb8vf")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(117, 230)
+rotation = -0.739249
+scale = Vector2(1.12358, 1.08156)
+texture = ExtResource("1_prjh6")
+
+[node name="turret_muzzle" type="Marker2D" parent="sprite"]
+position = Vector2(59.7072, -229.969)
+rotation = 0.785398
+
+[node name="shoot_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

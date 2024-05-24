@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://8imu1gjm8khr"]
+
+[ext_resource type="Script" path="res://Mouse_Moved_Player.gd" id="1_or4bd"]
+[ext_resource type="Texture2D" uid="uid://bqy8bfeagfee7" path="res://art/Player Model (1).png" id="2_7jp27"]
+[ext_resource type="PackedScene" uid="uid://o07mbj46qo5q" path="res://bullet.tscn" id="2_ral71"]
+[ext_resource type="PackedScene" uid="uid://cbq1tblidtvy7" path="res://shockwave.tscn" id="3_2yddg"]
+[ext_resource type="Script" path="res://Marker2D.gd" id="3_7y8mi"]
+[ext_resource type="Texture2D" uid="uid://c144dwo2o6s8d" path="res://art/Player Model3(Flipped).png" id="4_7dm6u"]
+[ext_resource type="Texture2D" uid="uid://c8mfjga6p5svo" path="res://art/Player Model2.png" id="4_kx4vy"]
+[ext_resource type="PackedScene" uid="uid://bb1jbkh7rx520" path="res://bomb.tscn" id="4_mq7fq"]
+[ext_resource type="Texture2D" uid="uid://d0fbcoqdh61p7" path="res://art/explosion.png" id="6_v5cb5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pivw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v5cb5")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7dm6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kx4vy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7jp27")
+}],
+"loop": true,
+"name": &"boost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7jp27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kx4vy")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbxg0"]
+radius = 48.0
+height = 134.0
+
+[node name="Mouse_Moved_Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(655, 250)
+motion_mode = 1
+script = ExtResource("1_or4bd")
+bullet = ExtResource("2_ral71")
+shockwave = ExtResource("3_2yddg")
+bomb = ExtResource("4_mq7fq")
+
+[node name="Aiming Direction" type="Marker2D" parent="."]
+position = Vector2(8, 11)
+script = ExtResource("3_7y8mi")
+
+[node name="Animations" type="AnimatedSprite2D" parent="Aiming Direction"]
+position = Vector2(-7.00002, 11)
+scale = Vector2(0.509727, 0.459538)
+sprite_frames = SubResource("SpriteFrames_6pivw")
+animation = &"flying"
+
+[node name="Muzzle" type="Marker2D" parent="Aiming Direction/Animations"]
+position = Vector2(-1.9618, -215.434)
+rotation = -1.5708
+scale = Vector2(1.37802, 1.57273)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 22)
+shape = SubResource("CapsuleShape2D_qbxg0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="shoottimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="boost_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="new_boost_timer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[node name="shockwave_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="bomb_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="shoottimer" to="." method="_on_shoottimer_timeout"]
+[connection signal="timeout" from="boost_timer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="new_boost_timer" to="." method="_on_new_boost_timer_timeout"]
+[connection signal="timeout" from="shockwave_timer" to="." method="_on_shockwave_timer_timeout"]
+[connection signal="timeout" from="bomb_timer" to="." method="_on_bomb_timer_timeout"]

@@ -1,0 +1,264 @@
+[gd_scene load_steps=4 format=3 uid="uid://dawv6c8cfnyo8"]
+
+[ext_resource type="Script" path="res://Player_upgrades.gd" id="1_1njg0"]
+[ext_resource type="Texture2D" uid="uid://w5hkn0esr7kj" path="res://art/Player Model2(Flipped).png" id="1_v8e8m"]
+[ext_resource type="FontFile" uid="uid://b10vrd8csdlok" path="res://art/SpeedyRegular-7BLoE.ttf" id="2_063du"]
+
+[node name="Player_Upgrade_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1njg0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ship_Upgrade_Tree_Line" type="Line2D" parent="Panel"]
+position = Vector2(578.5, 589)
+scale = Vector2(4.95, 6.9)
+points = PackedVector2Array(178.485, 120)
+width = 2.0
+default_color = Color(0.247059, 0.619608, 0, 1)
+joint_mode = 2
+
+[node name="Weaponry_Upgrade_Tree_Line" type="Line2D" parent="Panel"]
+position = Vector2(1169, 1296)
+points = PackedVector2Array(300, 120)
+default_color = Color(0.713726, 0, 0.133333, 1)
+joint_mode = 2
+
+[node name="Misc_Upgrade_Tree_Line" type="Line2D" parent="Panel"]
+position = Vector2(1172, 1296)
+points = PackedVector2Array(210, 120)
+default_color = Color(0, 0.419608, 0.847059, 1)
+joint_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -188.0
+offset_right = 80.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_v8e8m")
+expand_mode = 1
+
+[node name="Ship_Label" type="Label" parent="Panel"]
+layout_mode = 1
+offset_top = 181.0
+offset_right = 252.0
+offset_bottom = 261.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 40
+text = "Ship"
+
+[node name="Weaponry_Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 184.0
+offset_right = 72.0
+offset_bottom = 239.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 40
+text = "Weaponry"
+
+[node name="Misc_Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_top = 198.0
+offset_right = -10.0
+offset_bottom = 244.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 40
+text = "Misc"
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 50
+text = "Upgrades"
+
+[node name="Boost_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 474.0
+offset_top = -221.0
+offset_right = 633.0
+offset_bottom = -155.0
+grow_vertical = 2
+tooltip_text = "Hold Space to activate boost"
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Boost(10)"
+
+[node name="Speed_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = 54.0
+offset_right = 162.0
+offset_bottom = 128.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Speed (5)"
+
+[node name="Shield_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -322.0
+offset_right = 156.0
+offset_bottom = -256.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Shield (15)"
+
+[node name="Automatic_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 57.0
+offset_right = 345.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Automatic Weapon (5)"
+
+[node name="Bullet_Speed_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = -218.0
+offset_right = -102.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Bullet Speed (10)"
+
+[node name="Bullet_Size_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 173.0
+offset_top = -394.0
+offset_right = 335.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Bullet Size (15)"
+
+[node name="Double_Cash_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = 51.0
+offset_right = -1.0
+offset_bottom = 122.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Cash x2 (5)"
+
+[node name="Bomb_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -518.0
+offset_top = -222.0
+offset_right = -355.0
+offset_bottom = -152.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Bomb (10)"
+
+[node name="Shockwave_Upgrade" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -323.0
+offset_right = -1.0
+offset_bottom = -255.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_063du")
+theme_override_font_sizes/font_size = 28
+text = "Shockwave (15)"
+
+[connection signal="pressed" from="Panel/Boost_Upgrade" to="." method="_on_boost_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Speed_Upgrade" to="." method="_on_speed_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Shield_Upgrade" to="." method="_on_shield_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Automatic_Upgrade" to="." method="_on_automatic_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Bullet_Speed_Upgrade" to="." method="_on_bullet_speed_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Bullet_Size_Upgrade" to="." method="_on_bullet_size_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Double_Cash_Upgrade" to="." method="_on_double_cash_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Bomb_Upgrade" to="." method="_on_bomb_upgrade_pressed"]
+[connection signal="pressed" from="Panel/Shockwave_Upgrade" to="." method="_on_shockwave_upgrade_pressed"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://dveeeybvam7es"]
+
+[ext_resource type="Script" path="res://Speed_Mob.gd" id="1_av1eu"]
+[ext_resource type="PackedScene" uid="uid://dsmq80plghkv1" path="res://enemy_bullet.tscn" id="4_2ddrt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3ody"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1ygq"]
+radius = 33.2415
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lhly"]
+radius = 135.281
+
+[node name="Speed_Mob" type="RigidBody2D" groups=["enemy_bullets", "mobs"]]
+rotation = -0.365706
+script = ExtResource("1_av1eu")
+Bullet = ExtResource("4_2ddrt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.576263, 1.29148)
+rotation = -2.11413
+scale = Vector2(0.0427299, 0.0412403)
+sprite_frames = SubResource("SpriteFrames_g3ody")
+animation = &"Fly"
+
+[node name="Muzzle" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(-217.864, -703.754)
+gizmo_extents = 23.5
+
+[node name="Speed_Mob_Col" type="CollisionShape2D" parent="."]
+position = Vector2(0.576263, 1.29148)
+rotation = -1.19179
+shape = SubResource("CircleShape2D_p1ygq")
+one_way_collision = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-4.90987, 5.18793)
+rotation = 2.87724
+scale = Vector2(0.787499, 0.3875)
+
+[node name="PlayerDetectionZone" type="Area2D" parent="."]
+visible = false
+rotation = -1.97945
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+position = Vector2(-166.906, 108.621)
+rotation = 10.7957
+shape = SubResource("CircleShape2D_2lhly")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
