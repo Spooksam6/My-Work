@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbhhkbujyu5pj"]
+
+[ext_resource type="Script" path="res://Level1 Scene.gd" id="1_emai2"]
+[ext_resource type="Texture2D" uid="uid://crb8aprkumwm7" path="res://art/Level 1 Backdrop.png" id="1_v32rf"]
+[ext_resource type="PackedScene" uid="uid://bqjrpi8e84u8o" path="res://test_enemy.tscn" id="2_0vowx"]
+[ext_resource type="PackedScene" uid="uid://ce46gswj1bc4r" path="res://player.tscn" id="2_gejtj"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_emai2")
+test_enemy_scene = ExtResource("2_0vowx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 3094.0
+offset_bottom = 1846.0
+texture = ExtResource("1_v32rf")
+expand_mode = 3
+
+[node name="Player" parent="." instance=ExtResource("2_gejtj")]

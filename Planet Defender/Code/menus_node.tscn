@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjfd3mxv43fbk"]
+
+[ext_resource type="Script" path="res://menus_node.gd" id="1_wbpwt"]
+[ext_resource type="PackedScene" uid="uid://ug7bhaqnjdbl" path="res://Level1 Scene.tscn" id="2_k2oe1"]
+[ext_resource type="Texture2D" uid="uid://dewgrdtcdtc5b" path="res://art/Space Background2.png" id="2_uaumn"]
+[ext_resource type="FontFile" uid="uid://b10vrd8csdlok" path="res://art/SpeedyRegular-7BLoE.ttf" id="3_wvbej"]
+
+[node name="Menus node" type="Node2D"]
+script = ExtResource("1_wbpwt")
+Level_1 = ExtResource("2_k2oe1")
+
+[node name="BackGround" type="CanvasLayer" parent="."]
+
+[node name="SpaceBackground2" type="Sprite2D" parent="BackGround"]
+position = Vector2(1214.5, 824.5)
+scale = Vector2(1.76429, 1.76011)
+texture = ExtResource("2_uaumn")
+
+[node name="Main_Menu" type="Control" parent="BackGround"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BackGround/Main_Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -273.5
+offset_right = 273.5
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_wvbej")
+theme_override_font_sizes/font_size = 52
+text = "Space Game 2-D"
+
+[node name="Start" type="Button" parent="BackGround/Main_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -93.0
+offset_right = 171.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_wvbej")
+theme_override_font_sizes/font_size = 28
+text = "Start"
+
+[node name="Level Select" type="Control" parent="BackGround"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="BackGround/Level Select"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 131.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("3_wvbej")
+theme_override_font_sizes/font_size = 15
+text = "Back
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackGround/Level Select"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -194.0
+offset_right = 259.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.51937, 3.89772)
+
+[node name="Level 1" type="Button" parent="BackGround/Level Select/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wvbej")
+theme_override_font_sizes/font_size = 28
+text = "Enter"
+
+[node name="Label" type="Label" parent="BackGround/Level Select"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_wvbej")
+theme_override_font_sizes/font_size = 52
+text = "Level Select "
+
+[connection signal="pressed" from="BackGround/Main_Menu/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BackGround/Main_Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="BackGround/Level Select/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="BackGround/Level Select/HBoxContainer/Level 1" to="." method="_on_level_1_pressed"]

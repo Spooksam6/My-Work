@@ -1,0 +1,298 @@
+[gd_scene load_steps=19 format=3 uid="uid://ug7bhaqnjdbl"]
+
+[ext_resource type="Texture2D" uid="uid://bssxfibcw6kh2" path="res://art/Level 1 Backdrop.png" id="2_cqdg4"]
+[ext_resource type="PackedScene" uid="uid://dveeeybvam7es" path="res://Speed_Mob.tscn" id="2_uk4kq"]
+[ext_resource type="PackedScene" uid="uid://8isjr0s13n7j" path="res://mob.tscn" id="3_51jcl"]
+[ext_resource type="PackedScene" uid="uid://bpqru18ehvx5u" path="res://Ramming_Enemy.tscn" id="3_xvshu"]
+[ext_resource type="PackedScene" uid="uid://b7tx7ogbmail6" path="res://fast_shot_enemy.tscn" id="4_vcl2t"]
+[ext_resource type="PackedScene" uid="uid://c03nj8anm50dv" path="res://Splitting_Enemy.tscn" id="5_u56rs"]
+[ext_resource type="PackedScene" uid="uid://47xr8rautg2y" path="res://basic_tower.tscn" id="5_y15jn"]
+[ext_resource type="PackedScene" uid="uid://dp54o33w87lwm" path="res://upgrade_Menu.tscn" id="6_ks7am"]
+[ext_resource type="Texture2D" uid="uid://dxii5jq5xtpel" path="res://art/Level 2_BackDrop.png" id="7_5gmo8"]
+[ext_resource type="PackedScene" uid="uid://8imu1gjm8khr" path="res://Mouse_Moved_Player.tscn" id="7_01026"]
+[ext_resource type="PackedScene" uid="uid://dawv6c8cfnyo8" path="res://player_upgrade_menu.tscn" id="7_63477"]
+[ext_resource type="Texture2D" uid="uid://11ppl5y3kro7" path="res://art/Level 5 Backdrop.png" id="8_3xu77"]
+[ext_resource type="PackedScene" uid="uid://dufxfjcx53qc0" path="res://HUD.tscn" id="8_o7seb"]
+[ext_resource type="Texture2D" uid="uid://ca6d1gpguseo6" path="res://art/Level 4_BackDrop.png" id="9_c3bww"]
+[ext_resource type="PackedScene" uid="uid://dbmdckq3up8dg" path="res://game_over.tscn" id="9_tvkeg"]
+[ext_resource type="Texture2D" uid="uid://b55dqpxa3wxch" path="res://art/Level_5_Backdrop.png" id="10_mlty5"]
+
+[sub_resource type="GDScript" id="GDScript_xwg50"]
+script/source = "extends Node2D
+@export var Mob1: PackedScene
+@export var Mob2: PackedScene
+@export var Mob3: PackedScene
+@export var Mob4: PackedScene
+@export var Mob5: PackedScene
+@export var tower : Tower
+@export var Level_1 : PackedScene
+signal disable
+signal enable
+var amount_mobs = 3
+var wave_num=5
+var spawn = 1
+signal wave_over
+var level = 1
+var level_done = false
+var timer_duration = 3
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	var Level1=$\"Level 1\"
+	var Level2=$\"Level 2\"
+	var Level3=$\"Level 3\"
+	var Level4=$\"Level 4\"
+	var Level5=$\"Level 5\"
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+	$MobTimer.start()
+	$WaveTimer.start()
+	$wave.show()
+	#if $Mouse_Moved_Player/CanvasLayer3 != null:
+		#$Mouse_Moved_Player/CanvasLayer3.show()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+		if Input.is_action_just_pressed(\"enter\") and level_done:
+			level_done = false
+			next_level()
+
+			
+func _input(event: InputEvent):
+	if event.is_action_pressed('upgrade'):
+		$CanvasLayer2.visible = !$CanvasLayer2.visible
+func _on_mob_timer_timeout():
+		$wave.hide()
+		var x = randi() % level
+		var mob
+		if x == 0:	
+			mob = Mob1.instantiate()
+		if x == 1:
+			mob= Mob2.instantiate()
+		if x == 2:	
+			mob = Mob3.instantiate()
+		if x == 3:
+			mob= Mob4.instantiate()
+		if x == 4:
+			mob=Mob5.instantiate()
+		var mob_spawn_location = $MobPath/MobSpawnLocation
+		mob_spawn_location.progress_ratio = randf()
+		var direction = mob_spawn_location.rotation + PI/4
+		mob.position = mob_spawn_location.position
+		direction += randf_range(-PI/4, PI/4)
+		mob.rotation = direction
+		
+		add_child(mob)
+		#print(amount_mobs)
+
+func _on_hud_game_over(_game_over):
+	emit_signal('disable',disable)
+	$Mouse_Moved_Player/hud_canvas.hide()
+	$\"Mouse_Moved_Player/Aiming Direction/Animations\".play('Death')
+	await get_tree().create_timer(2).timeout
+	$Mouse_Moved_Player.hide()
+	$CanvasLayer4.show()
+
+
+func _on_game_over_restart(_restart):
+	emit_signal('enable',enable)
+	
+
+
+func _on_game_over_quit(_quit):
+	queue_free()
+	get_parent().get_node(\"Menus node\").get_node(\"BackGround\").show()
+
+
+func _on_wave_timer_timeout():
+	timer_duration -= 0.3
+	$MobTimer.wait_time = timer_duration
+	if wave_num !=-1:
+		$wave.set_text(\"wave \" + str(wave_num))
+		$wave.show()
+		wave_num-=1
+	if wave_num >= 0:
+		spawn += 1
+		amount_mobs = 2 + spawn+level
+	if wave_num ==-1:
+		$wave.set_text(\"Level Complete! Press ENTER to start a new level.\")
+		$WaveTimer.stop()
+		level_done = true
+func next_level():
+	level +=1
+	get_node(\"Mouse_Moved_Player\").get_node(\"hud_canvas\").get_node(\"HUD\")._ready()
+	$Mouse_Moved_Player.position.x = 549
+	$Mouse_Moved_Player.position.y = 940
+	if level == 2:
+		$'Level 1'.hide()
+		wave_num=5
+		$'Level 2'.show()
+		level_done = false
+		$basic_tower.position.x = 2236
+		$basic_tower.position.y = 592
+		$WaveTimer.start()
+	if level == 3:
+		$'Level 2'.hide()
+		wave_num=6
+		$'Level 3'.show()
+		level_done = false
+		$basic_tower.position.x = 2144
+		$basic_tower.position.y = 540
+		$WaveTimer.start()
+		print(\"0n3\")
+	if level ==4:
+		$'Level 3'.hide()
+		wave_num=7
+		$'Level 4'.show()
+		level_done = false
+		$basic_tower.position.x = 2255
+		$basic_tower.position.y = 603
+		$WaveTimer.start()
+		print(\"onn4\")
+	if level == 5:
+		$'Level 4'.hide()
+		wave_num=8
+		$'Level 5'.show()
+		level_done = false
+		$WaveTimer.start()
+		print(\"FIVE\")
+		$basic_tower.position.x = 2144
+		$basic_tower.position.y = 540
+"
+
+[sub_resource type="Curve2D" id="Curve2D_vm0l8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3104, 0, 0, 0, 0, 0, 3096, 1840, 0, 0, 0, 0, 0, 1848, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("tower")]
+script = SubResource("GDScript_xwg50")
+Mob1 = ExtResource("3_51jcl")
+Mob2 = ExtResource("2_uk4kq")
+Mob3 = ExtResource("3_xvshu")
+Mob4 = ExtResource("4_vcl2t")
+Mob5 = ExtResource("5_u56rs")
+tower = NodePath("basic_tower")
+metadata/_edit_horizontal_guides_ = [531.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1617.0
+offset_top = -1216.0
+offset_right = 6541.0
+offset_bottom = 4238.0
+color = Color(0, 0, 0, 1)
+
+[node name="Level 1" type="TextureRect" parent="."]
+offset_right = 4164.0
+offset_bottom = 2560.0
+texture = ExtResource("2_cqdg4")
+expand_mode = 3
+
+[node name="Level 2" type="TextureRect" parent="."]
+visible = false
+offset_left = 4.0
+offset_top = 12.0
+offset_right = 3844.0
+offset_bottom = 2172.0
+scale = Vector2(1.15786, 1.1776)
+texture = ExtResource("7_5gmo8")
+expand_mode = 3
+
+[node name="Level 3" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(69.5385, 65.8342)
+size_flags_horizontal = 4
+texture = ExtResource("8_3xu77")
+expand_mode = 3
+
+[node name="Level 4" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(62.5406, 65.7923)
+texture = ExtResource("9_c3bww")
+expand_mode = 3
+
+[node name="Level 5" type="TextureRect" parent="."]
+visible = false
+offset_right = 4480.0
+offset_bottom = 2612.0
+texture = ExtResource("10_mlty5")
+expand_mode = 3
+
+[node name="basic_tower" parent="." node_paths=PackedStringArray("Basic_Tower") instance=ExtResource("5_y15jn")]
+position = Vector2(2023, 523)
+Basic_Tower = NodePath("../CanvasLayer/upgrade_menu")
+
+[node name="mob" parent="." instance=ExtResource("3_51jcl")]
+position = Vector2(848, 1352)
+linear_damp_mode = 1
+linear_damp = 20.162
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vm0l8")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Mouse_Moved_Player" parent="." instance=ExtResource("7_01026")]
+position = Vector2(549, 940)
+
+[node name="hud_canvas" type="CanvasLayer" parent="Mouse_Moved_Player"]
+
+[node name="HUD" parent="Mouse_Moved_Player/hud_canvas" instance=ExtResource("8_o7seb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="upgrade_menu" parent="CanvasLayer" node_paths=PackedStringArray("Upgrade_Menu") instance=ExtResource("6_ks7am")]
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 8.0
+offset_bottom = -2.0
+Upgrade_Menu = NodePath("../../basic_tower")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Player_Upgrade_Menu" parent="CanvasLayer2" instance=ExtResource("7_63477")]
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Game_Over" parent="CanvasLayer4" instance=ExtResource("9_tvkeg")]
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 25.0
+
+[node name="wave" type="Label" parent="."]
+visible = false
+offset_left = 1224.0
+offset_top = 976.0
+offset_right = 2778.0
+offset_bottom = 1513.0
+theme_override_font_sizes/font_size = 250
+text = "Wave 1"
+
+[connection signal="disable" from="." to="Mouse_Moved_Player" method="_on_node_2d_disable"]
+[connection signal="enable" from="." to="Mouse_Moved_Player" method="_on_node_2d_enable"]
+[connection signal="wave_over" from="." to="." method="_on_wave_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="hit" from="Mouse_Moved_Player" to="Mouse_Moved_Player/hud_canvas/HUD" method="_on_mouse_moved_player_hit"]
+[connection signal="game_over" from="Mouse_Moved_Player/hud_canvas/HUD" to="." method="_on_hud_game_over"]
+[connection signal="Auto_Bullet" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_auto_bullet"]
+[connection signal="Bullet_Speed" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_bullet_speed"]
+[connection signal="Cash" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_cash"]
+[connection signal="Shockwave" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_shockwave"]
+[connection signal="bomb" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_bomb"]
+[connection signal="boost" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_boost"]
+[connection signal="bsize" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_bsize"]
+[connection signal="shield" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player/hud_canvas/HUD" method="_on_player_upgrade_menu_shield"]
+[connection signal="speedd" from="CanvasLayer2/Player_Upgrade_Menu" to="Mouse_Moved_Player" method="_on_player_upgrade_menu_speedd"]
+[connection signal="quit" from="CanvasLayer4/Game_Over" to="." method="_on_game_over_quit"]
+[connection signal="restart" from="CanvasLayer4/Game_Over" to="." method="_on_game_over_restart"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

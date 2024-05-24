@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj7sr0yaeykdc"]
+
+[ext_resource type="Texture2D" uid="uid://dewgrdtcdtc5b" path="res://art/Space Background2.png" id="1_n71xd"]
+
+[node name="Level5 Scene" type="Node2D"]
+
+[node name="SpaceBackground2" type="Sprite2D" parent="."]
+position = Vector2(1055, 656)
+scale = Vector2(1.1956, 1.17223)
+texture = ExtResource("1_n71xd")
+
+[node name="PlanetSam" type="Sprite2D" parent="."]
+position = Vector2(1086, 655)
+scale = Vector2(0.541248, 0.543609)

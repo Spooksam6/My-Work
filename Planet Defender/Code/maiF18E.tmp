@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba2nianu6j0jj"]
+
+[ext_resource type="PackedScene" uid="uid://cp4sd5ulkklkf" path="res://main_menu.tscn" id="1_0vdql"]
+[ext_resource type="Script" path="res://Qt5.gd" id="1_na1as"]
+[ext_resource type="PackedScene" uid="uid://bcv72wlm17rd5" path="res://Level_Select_menu.tscn" id="2_iyktq"]
+[ext_resource type="PackedScene" uid="uid://bbhhkbujyu5pj" path="res://Level1 Scene.tscn" id="3_y4nki"]
+[ext_resource type="PackedScene" uid="uid://b2jbulrsecxer" path="res://level_2_scene.tscn" id="4_j7q8v"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_na1as")
+
+[node name="main_menu" parent="." instance=ExtResource("1_0vdql")]
+script = null
+
+[node name="Level_Select" parent="." instance=ExtResource("2_iyktq")]
+script = null
+
+[node name="Level 1" parent="Level_Select" instance=ExtResource("3_y4nki")]
+
+[node name="Level 2" parent="Level_Select" instance=ExtResource("4_j7q8v")]
+script = null
