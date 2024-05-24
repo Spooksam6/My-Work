@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://by26ctkkhej2t"]
+
+[ext_resource type="Script" path="res://spliited_enemy.gd" id="1_nhdit"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86qje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87sla"]
+radius = 25.0
+height = 68.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unoc0"]
+radius = 27.0
+height = 82.0
+
+[node name="Spliited_Enemy" type="RigidBody2D" groups=["mobs"]]
+script = ExtResource("1_nhdit")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_86qje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 9)
+shape = SubResource("CapsuleShape2D_87sla")
+
+[node name="gel" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gel"]
+position = Vector2(-1, 9)
+shape = SubResource("CapsuleShape2D_unoc0")
+
+[connection signal="body_entered" from="gel" to="." method="_on_gel_body_entered"]

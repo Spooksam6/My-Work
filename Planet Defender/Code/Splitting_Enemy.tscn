@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c03nj8anm50dv"]
+
+[ext_resource type="Script" path="res://Splitting_Enemy.gd" id="1_eos0f"]
+[ext_resource type="PackedScene" uid="uid://by26ctkkhej2t" path="res://spliited_enemy.tscn" id="2_pb5yg"]
+[ext_resource type="Texture2D" uid="uid://cywdfhxsukbvj" path="res://art/Spliting_Enemy.png" id="3_wkqx4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygxb7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wkqx4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0yih"]
+radius = 5.77089
+height = 30.4912
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6kqd"]
+radius = 34.1317
+height = 97.0721
+
+[node name="Splitting_Enemy" type="RigidBody2D" groups=["mobs", "splitter"]]
+position = Vector2(17, -81)
+rotation = 0.0931501
+script = ExtResource("1_eos0f")
+mob = ExtResource("2_pb5yg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.410067, 17.1123)
+rotation = -4.60146
+scale = Vector2(0.15, 0.143)
+sprite_frames = SubResource("SpriteFrames_ygxb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.88401, 16.5259)
+rotation = -0.015782
+scale = Vector2(4.30922, 2.62407)
+shape = SubResource("CapsuleShape2D_u0yih")
+one_way_collision = true
+
+[node name="right_marker" type="Marker2D" parent="."]
+position = Vector2(-2.74805, 30.7891)
+scale = Vector2(2, 2)
+
+[node name="left_marker" type="Marker2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5831, 15.4)
+shape = SubResource("CapsuleShape2D_e6kqd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

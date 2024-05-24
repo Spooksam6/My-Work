@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqjrpi8e84u8o"]
+
+[ext_resource type="Texture2D" uid="uid://bprxnabcbxmvw" path="res://art/Rough_Enemy_1.png" id="1_g8juj"]
+[ext_resource type="Script" path="res://test_enemy.gd" id="1_uoeur"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5eea8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g8juj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="test_enemy" type="RigidBody2D" groups=["mobs"]]
+position = Vector2(139, 67)
+gravity_scale = 2.25
+script = ExtResource("1_uoeur")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, 4)
+scale = Vector2(0.01, 0.01)
+sprite_frames = SubResource("SpriteFrames_5eea8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-35, 27, -31, 15, 27, 15, 27, 17, 28, 17, 30, 18, 31, 20, 31, 22, 32, 23, 33, 26, 37, 26, 37, 23, 38, 20, 41, 16, 42, 15, 41, 15, 41, -19, 32, -20, 27, -17, -31, -17, -34, -19, -37, -19, -39, -19, -41, -19, -43, -18, -44, -17, -45, -16, -45, 17, -44, 17, -43, 19, -42, 21, -41, 24, -40, 27)
