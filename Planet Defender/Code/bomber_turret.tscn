@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3enxjcxxk2r0"]
+
+[ext_resource type="Script" path="res://bomber_turret.gd" id="1_jj642"]
+[ext_resource type="PackedScene" uid="uid://bb1jbkh7rx520" path="res://bomb.tscn" id="2_isr26"]
+[ext_resource type="Texture2D" uid="uid://c3xxf4qv0muly" path="res://art/Tower_Weapon_1.png" id="2_yk1dh"]
+
+[node name="bomber_turret" type="Area2D"]
+script = ExtResource("1_jj642")
+Bomb = ExtResource("2_isr26")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-219, -259)
+texture = ExtResource("2_yk1dh")
+
+[node name="turret_muzzle" type="Marker2D" parent="sprite"]
+position = Vector2(223, -19)
+
+[node name="shoot_timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

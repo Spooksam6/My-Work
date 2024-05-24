@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb1jbkh7rx520"]
+
+[ext_resource type="Script" path="res://bomb.gd" id="1_jixpl"]
+[ext_resource type="Texture2D" uid="uid://bq3twdsyfg1u3" path="res://art/bomb.png" id="1_ktb6w"]
+[ext_resource type="Texture2D" uid="uid://cwg6uwsvgk72p" path="res://art/explosion.png" id="2_sy3oo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybimf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ktb6w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sy3oo")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbfvq"]
+radius = 22.3358
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22nxa"]
+radius = 59.4599
+height = 157.345
+
+[node name="bomb" type="Area2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_jixpl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ybimf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_fbfvq")
+
+[node name="explosion_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosion_range"]
+position = Vector2(1.33333, -2.66667)
+rotation = 0.645772
+shape = SubResource("CapsuleShape2D_22nxa")
+debug_color = Color(0.156863, 0.631373, 0.407843, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="explosion_range" to="." method="_on_explosion_range_body_entered"]
+[connection signal="body_exited" from="explosion_range" to="." method="_on_explosion_range_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

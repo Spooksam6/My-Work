@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://47xr8rautg2y"]
+
+[ext_resource type="Texture2D" uid="uid://dqkr5et6ugvon" path="res://art/Tower_Base.png" id="1_g6d1d"]
+[ext_resource type="Script" path="res://basic_tower.gd" id="1_uj6w2"]
+[ext_resource type="PackedScene" uid="uid://db0kkqt47l0ej" path="res://shooter_turret.tscn" id="2_xbura"]
+[ext_resource type="PackedScene" uid="uid://d3enxjcxxk2r0" path="res://bomber_turret.tscn" id="3_ckr25"]
+[ext_resource type="Texture2D" uid="uid://4ry60s83hppr" path="res://art/tower_level_2_badge.png" id="4_5pjrm"]
+[ext_resource type="PackedScene" uid="uid://csmq6tovr1bcg" path="res://waver_turret.tscn" id="4_llapj"]
+[ext_resource type="Texture2D" uid="uid://phl4ewxvuxuh" path="res://art/tower_level_3_badge.png" id="5_vweh1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orp37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g6d1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybyh4"]
+radius = 135.0
+height = 450.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsct5"]
+radius = 141.057
+
+[node name="basic_tower" type="Area2D"]
+script = ExtResource("1_uj6w2")
+shooter_turret = ExtResource("2_xbura")
+bomber_turret = ExtResource("3_ckr25")
+waver_turret = ExtResource("4_llapj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 12)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_orp37")
+
+[node name="turret_location" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(10, -215)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 13)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_ybyh4")
+
+[node name="interaction_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_range"]
+position = Vector2(7, 14)
+shape = SubResource("CircleShape2D_fsct5")
+debug_color = Color(0, 0.631373, 0.47451, 0.419608)
+
+[node name="Interact_Sign" type="ColorRect" parent="."]
+visible = false
+offset_left = -55.0
+offset_top = -190.0
+offset_right = 56.0
+offset_bottom = -150.0
+color = Color(0.541176, 1, 1, 0.290196)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -49.0
+offset_top = -184.0
+offset_right = 46.0
+offset_bottom = -161.0
+text = "E to Interact"
+
+[node name="TowerLevel2Badge" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 40)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_5pjrm")
+
+[node name="TowerLevel3Badge" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8.475, 30.025)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_vweh1")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="area_entered" from="interaction_range" to="." method="_on_interaction_range_area_entered"]
+[connection signal="area_exited" from="interaction_range" to="." method="_on_interaction_range_area_exited"]
+[connection signal="body_entered" from="interaction_range" to="." method="_on_interaction_range_body_entered"]
+[connection signal="body_exited" from="interaction_range" to="." method="_on_interaction_range_body_exited"]
