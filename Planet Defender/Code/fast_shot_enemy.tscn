@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7tx7ogbmail6"]
+
+[ext_resource type="Script" path="res://fast_shot_enemy.gd" id="1_hmvfd"]
+[ext_resource type="PackedScene" uid="uid://dsmq80plghkv1" path="res://enemy_bullet.tscn" id="2_1sjj7"]
+[ext_resource type="Texture2D" uid="uid://cenbnkhwiljht" path="res://art/Single_Shot_Enemy.png" id="3_28sng"]
+[ext_resource type="PackedScene" uid="uid://o07mbj46qo5q" path="res://bullet.tscn" id="4_jv2t8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rxkk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_28sng")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"fast_shot_enemy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_28sng")
+}],
+"loop": true,
+"name": &"single_shot_enemy",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1ygq"]
+radius = 33.2415
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lhly"]
+radius = 135.281
+
+[node name="Fast_Shot_Enemy" type="RigidBody2D" groups=["enemy_bullets", "mobs"]]
+rotation = -0.365706
+script = ExtResource("1_hmvfd")
+Bullet = ExtResource("2_1sjj7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.86774, -0.715214)
+rotation = -4.89135
+scale = Vector2(0.0427299, 0.0412403)
+sprite_frames = SubResource("SpriteFrames_0rxkk")
+animation = &"single_shot_enemy"
+
+[node name="Muzzle" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(-217.864, -703.754)
+gizmo_extents = 23.5
+
+[node name="Single_Shot_Col" type="CollisionShape2D" parent="."]
+position = Vector2(-2.22535, 0.218654)
+rotation = -1.19179
+shape = SubResource("CircleShape2D_p1ygq")
+one_way_collision = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-4.90987, 5.18793)
+rotation = 2.87724
+scale = Vector2(0.787499, 0.3875)
+
+[node name="Bullets" parent="." instance=ExtResource("4_jv2t8")]
+visible = false
+
+[node name="PlayerDetectionZone" type="Area2D" parent="."]
+visible = false
+rotation = -1.97945
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+position = Vector2(-166.906, 108.621)
+rotation = 10.7957
+shape = SubResource("CircleShape2D_2lhly")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
